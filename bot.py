@@ -43,6 +43,31 @@ async def category_suggest(ctx):
     suggestion = random.choice(channel_names)
     await ctx.send(f"🎲 Random {category_name}: **{suggestion}**")
 
+@bot.command(name="add")
+async def add_game(ctx, *, game_name: str):
+    """
+    Add a new game to the list.
+    Usage: !add <game_name>
+    """
+    if game_name in multiplayer_games:
+        await ctx.send(f"Game '{game_name}' is already in the list.")
+        return
+    multiplayer_games.append(game_name)
+    pd.DataFrame(multiplayer_games, columns=['game']).to_csv('games.csv', index=False)
+    await ctx.send(f"Game '{game_name}' has been added to the list.")
+
+@bot.command(name="remove")
+async def remove_game(ctx, *, game_name: str):
+    """
+    Remove a game from the list.
+    Usage: !remove <game_name>
+    """
+    if game_name not in multiplayer_games:
+        await ctx.send(f"Game '{game_name}' is not in the list.")
+        return
+    multiplayer_games.remove(game_name)
+    pd.DataFrame(multiplayer_games, columns=['game']).to_csv('games.csv', index=False)
+    await ctx.send(f"Game '{game_name}' has been removed from the list.")
 
 load_dotenv()
 bot.run(os.getenv("DISCORD_BOT_TOKEN"))

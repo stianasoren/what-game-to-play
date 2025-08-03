@@ -2,25 +2,10 @@ import random
 import tkinter as tk
 import threading
 import time
+import pandas as pd
 
-games = [
-    "Fortnite",
-    "Apex Legends",
-    "Call of Duty: Warzone",
-    "Valorant",
-    "Rocket League",
-    "Overwatch 2",
-    "League of Legends",
-    "Counter-Strike 2",
-    "Minecraft",
-    "Destiny 2",
-    "PUBG: Battlegrounds",
-    "Rainbow Six Siege",
-    "Dota 2",
-    "Among Us",
-    "Fall Guys",
-    "Battlefield"
-]
+# Read games from CSV file
+games = pd.read_csv('games.csv')['game'].tolist()
 
 def suggest_game():
     return random.choice(games)

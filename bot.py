@@ -3,41 +3,10 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import os
+import pandas as pd
 
-multiplayer_games = [
-    "Fortnite",
-    "Apex Legends",
-    "Call of Duty: Warzone",
-    "Valorant",
-    "Rocket League",
-    "Overwatch 2",
-    "League of Legends",
-    "Counter-Strike 2",
-    "Minecraft",
-    "Destiny 2",
-    "PUBG: Battlegrounds",
-    "Rainbow Six Siege",
-    "Dota 2",
-    "Among Us",
-    "Fall Guys",
-    "Battlefield V",
-    "Battlefield 2042",
-    "Battlefield 1",
-    "Battlefield 4",
-    "Esape from Tarkov",
-    "Old School RuneScape",
-    "World of Warcraft",
-    "Ghost Recon Breakpoint",
-    "Hunt: Showdown",
-    "Phasmophobia",
-    "Sea of Thieves",
-    "Marvel Rivals",
-    "Squad",
-    "R.E.P.O.",
-    "Day Z",
-    "Lethal Company",
-    "Project Zomboid"
-]
+# Read games from CSV file
+multiplayer_games = pd.read_csv('games.csv')['game'].tolist()
 
 intents = discord.Intents.default()
 intents.message_content = True

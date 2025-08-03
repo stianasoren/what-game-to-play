@@ -14,13 +14,37 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.command(name="suggest")
 async def suggest_game(ctx):
+    """
+    Get a random game suggestion from the list of multiplayer games.
+    Usage: !suggest
+    """
     game = random.choice(multiplayer_games)
     await ctx.send(f"🎮 You should play: **{game}** tonight!")
 
 @bot.command(name="games")
 async def list_games(ctx):
-    games_str = "\n".join(f"- {game}" for game in multiplayer_games)
-    await ctx.send(f"Here are some multiplayer games you can play:\n{games_str}")
+    """
+    Display a list of all available multiplayer games.
+    Usage: !games
+    """
+    # Format games in a single column with alternating emojis for better mobile readability
+    games_str = "\n".join(f"🎮 {game}" for game in sorted(multiplayer_games))
+    # Split message if it's too long for Discord (2000 char limit)
+    if len(games_str) > 1900:  # Leave room for the header text
+        messages = []
+        current_msg = "Here are some multiplayer games you can play:\n"
+        for game in sorted(multiplayer_games):
+            line = f"🎮 {game}\n"
+            if len(current_msg) + len(line) > 1900:
+                messages.append(current_msg)
+                current_msg = line
+            else:
+                current_msg += line
+        messages.append(current_msg)
+        for msg in messages:
+            await ctx.send(msg)
+    else:
+        await ctx.send(f"Here are some multiplayer games you can play:\n{games_str}")
 
 @bot.command(name="spell")
 async def category_suggest(ctx):

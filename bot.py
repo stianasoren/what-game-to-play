@@ -20,7 +20,23 @@ multiplayer_games = [
     "Dota 2",
     "Among Us",
     "Fall Guys",
-    "Battlefield"
+    "Battlefield V",
+    "Battlefield 2042",
+    "Battlefield 1",
+    "Battlefield 4",
+    "Esape from Tarkov",
+    "Old School RuneScape",
+    "World of Warcraft",
+    "Ghost Recon Breakpoint",
+    "Hunt: Showdown",
+    "Phasmophobia",
+    "Sea of Thieves",
+    "Marvel Rivals",
+    "Squad",
+    "R.E.P.O.",
+    "Day Z",
+    "Lethal Company",
+    "Project Zomboid"
 ]
 
 intents = discord.Intents.default()
@@ -34,7 +50,7 @@ async def suggest_game(ctx):
 
 @bot.command(name="games")
 async def list_games(ctx):
-    games_str = "\n".join(multiplayer_games)
+    games_str = "\n".join(f"- {game}" for game in multiplayer_games)
     await ctx.send(f"Here are some multiplayer games you can play:\n{games_str}")
 
 @bot.command(name="spell")

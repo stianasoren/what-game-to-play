@@ -1,5 +1,9 @@
 # What Game To Play Tonight?
 
+<p align="center">
+  <img src="assets/avatar.png" alt="Avatar" width="200" />
+</p>
+
 This project helps you decide what game to play tonight. It includes both a Python GUI script and a Discord bot for game suggestions.
 
 ## Getting Started

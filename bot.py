@@ -6,7 +6,11 @@ import os
 import pandas as pd
 
 # Read games from CSV file
-multiplayer_games = pd.read_csv('games.csv')['game'].tolist()
+try:
+    multiplayer_games = pd.read_csv('games.csv')['game'].tolist()
+except Exception as e:
+    print(f"Error reading games.csv: {e}")
+    multiplayer_games = []  # Initialize with empty list if file can't be read
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -68,11 +72,20 @@ async def category_suggest(ctx):
     await ctx.send(f"🎲 Random {category_name}: **{suggestion}**")
 
 @bot.command(name="add")
+@commands.has_permissions(administrator=True)
 async def add_game(ctx, *, game_name: str):
     """
     Add a new game to the list.
     Usage: !add <game_name>
+    Requires administrator permissions.
     """
+    # Input validation
+    if len(game_name) > 100:  # Reasonable limit for game names
+        await ctx.send("Game name is too long. Please keep it under 100 characters.")
+        return
+    if not game_name.strip():  # Check for empty or whitespace-only names
+        await ctx.send("Game name cannot be empty.")
+        return
     if game_name in multiplayer_games:
         await ctx.send(f"Game '{game_name}' is already in the list.")
         return
@@ -81,10 +94,12 @@ async def add_game(ctx, *, game_name: str):
     await ctx.send(f"Game '{game_name}' has been added to the list.")
 
 @bot.command(name="remove")
+@commands.has_permissions(administrator=True)
 async def remove_game(ctx, *, game_name: str):
     """
     Remove a game from the list.
     Usage: !remove <game_name>
+    Requires administrator permissions.
     """
     if game_name not in multiplayer_games:
         await ctx.send(f"Game '{game_name}' is not in the list.")

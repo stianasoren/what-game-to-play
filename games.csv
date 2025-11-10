@@ -1,35 +1,41 @@
-game
-Fortnite
-Apex Legends
-Call of Duty: Warzone
-Valorant
-Rocket League
-Overwatch 2
-League of Legends
-Counter-Strike 2
-Minecraft
-Destiny 2
-PUBG: Battlegrounds
-Rainbow Six Siege
-Dota 2
-Among Us
-Fall Guys
-Battlefield V
-Battlefield 2042
-Battlefield 1
-Battlefield 4
-Esape from Tarkov
-Old School RuneScape
-World of Warcraft
-Ghost Recon Breakpoint
-Hunt: Showdown
-Phasmophobia
-Sea of Thieves
-Marvel Rivals
-Squad
-R.E.P.O.
-Day Z
-Lethal Company
-Project Zomboid
-Arma III
-Call of Duty
+game,tags
+Fortnite,"fps,battle-royale"
+Apex Legends,"fps,battle-royale"
+Call of Duty: Warzone,"fps,battle-royale"
+Valorant,fps
+Rocket League,general
+Overwatch 2,fps
+League of Legends,moba
+Counter-Strike 2,fps
+Minecraft,general
+Destiny 2,fps
+PUBG: Battlegrounds,"fps,battle-royale"
+Rainbow Six Siege,fps
+Dota 2,moba
+Among Us,party
+Fall Guys,party
+Battlefield V,fps
+Battlefield 2042,fps
+Battlefield 1,fps
+Battlefield 4,fps
+Escape from Tarkov,"fps,extraction-shooter"
+Old School RuneScape,mmo
+World of Warcraft,mmo
+Ghost Recon Breakpoint,fps
+Hunt: Showdown,"fps,extraction-shooter"
+Phasmophobia,party
+Sea of Thieves,party
+Marvel Rivals,general
+Squad,fps
+R.E.P.O.,party
+Day Z,"fps"
+Lethal Company,party
+Project Zomboid,general
+Arma III,fps
+Call of Duty,fps
+Valheim,general
+PEAK,party
+No Man's Sky,general
+RV There Yet?,party
+Schedule 1,party
+ARC Raiders,"fps,extraction-shooter"
